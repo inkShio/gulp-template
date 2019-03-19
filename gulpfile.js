@@ -153,15 +153,7 @@ gulp.task('svg-symbol', function () {
 		}))
 		.pipe(replace('&gt;', '>'))
 		.pipe(svgSprite(config.svg.symbol))
-		.pipe(gulpIf(
-			'*.scss',
-			gulp.dest('tmp/').pipe(notify({
-				message: "svg-symbol scss complete"
-			})),
-			gulp.dest(paths.build.svg).pipe(notify({
-				message: "svg-symbol svg complete"
-			}))
-		));
+		.pipe(gulpIf('*.scss', gulp.dest('tmp/'), gulp.dest(paths.build.svg)));
 });
 
 gulp.task('svg-background', function () {
@@ -191,15 +183,7 @@ gulp.task('svg-background', function () {
 		}))
 		.pipe(replace('&gt;', '>'))
 		.pipe(svgSprite(config.svg.background))
-		.pipe(gulpIf(
-			'*.scss',
-			gulp.dest('tmp/').pipe(notify({
-				message: "svg-background scss complete"
-			})),
-			gulp.dest(paths.build.svg).pipe(notify({
-				message: "svg-background svg complete"
-			}))
-		));
+		.pipe(gulpIf('*.scss', gulp.dest('tmp/'), gulp.dest(paths.build.svg)));
 });
 
 // Таск локального веб сервера
